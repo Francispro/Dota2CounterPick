@@ -8,7 +8,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import com.francispro.dota2counterpick.CounterPickActivity;
 import com.francispro.dota2counterpick.Main;
-import com.francispro.dota2counterpick.R;
 import com.francispro.dota2counterpick.cp;
 
 

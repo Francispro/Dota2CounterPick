@@ -2,23 +2,11 @@ package com.francispro.dota2counterpick;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Field;
-import java.net.URI;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,18 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.webkit.WebView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.francispro.dota2counterpick.Connect.httpHandler;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 
 public class Informacion extends Activity {

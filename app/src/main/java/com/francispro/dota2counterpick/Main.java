@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.SearchView;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
 import java.lang.reflect.Field;
-import android.support.v7.widget.SearchView.OnQueryTextListener;
+
 
 public class Main extends TabActivity {
 

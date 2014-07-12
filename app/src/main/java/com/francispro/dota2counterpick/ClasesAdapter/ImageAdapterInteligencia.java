@@ -6,12 +6,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import com.francispro.dota2counterpick.Main;
 import com.francispro.dota2counterpick.R;
+
 /**
  * Created by franciscojavier on 11-07-14.
  */
+
+
 public class ImageAdapterInteligencia extends BaseAdapter {
 
     int[] imagesInteligencia = {R.drawable.crystal_maiden_full,R.drawable.puck_full,R.drawable.storm_spirit_full,R.drawable.windranger_full

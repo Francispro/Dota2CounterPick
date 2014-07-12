@@ -6,15 +6,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-
 import com.francispro.dota2counterpick.CounterPickActivity;
 import com.francispro.dota2counterpick.Main;
-import com.francispro.dota2counterpick.cp;
 import com.francispro.dota2counterpick.sp;
 
 /**
  * Created by franciscojavier on 31-05-14.
  */
+
 public class StrongerPickAdapter extends BaseAdapter {
 
     public static final String TAG = "--StrongerPickAdapter ";

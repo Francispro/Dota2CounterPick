@@ -1,7 +1,6 @@
 package com.francispro.dota2counterpick;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
 
 import java.lang.reflect.Field;
