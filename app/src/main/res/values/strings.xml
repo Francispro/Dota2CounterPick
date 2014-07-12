@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dota2</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_fuerza">FuerzaActivity</string>
+    <string name="title_activity_aguilidad">AguilidadActivity</string>
+    <string name="title_activity_inteligencia">InteligenciaActivity</string>
+    <string name="title_activity_agilidad">AgilidadActivity</string>
+    <string name="title_activity_counter_pick">Dota2</string>
+    <string name="title_activity_cp">cp</string>
+    <string name="title_activity_sp">sp</string>
+    <string name="title_activity_hola">hola</string>
+    <string name="title_activity_informacion">Information</string>
+    <string name="title_activity_dboperations">DBOperations</string>
+    <string name="title_activity_base_datos_helper">BaseDatosHelper</string>
+    <string name="title_activity_dbhelper">DBHelper</string>
+    <string name="label_data_loader">Looking necessary information, please wait.</string>
+    <string name="label_data_connection">This section requires an internet connection.Check your network settings and try again.</string>
+    <string name="label_data_connection_title">Network Error</string>
+
+</resources>

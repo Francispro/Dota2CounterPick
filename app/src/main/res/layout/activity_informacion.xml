@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#171919"
+    android:orientation="vertical"
+    tools:context="com.francispro.dota2counterpick.Informacion">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_Name"
+            android:text=""
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewInfo"
+            android:src="@drawable/vengefulspirit_full"
+            android:background="#00000000"
+            android:layout_gravity="center_horizontal" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingTop="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.5"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:id="@+id/ll1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_win"
+            android:text=""
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:paddingTop="12dp"
+            android:paddingBottom="5dp" />
+
+
+        <WebView android:id="@+id/char_view"
+            android:paddingTop="10dp"
+            android:background="#00000000"
+            android:paddingBottom="5dp"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_pop"
+            android:text=""
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:paddingBottom="5dp" />
+
+        <WebView android:id="@+id/char_view_pop"
+            android:paddingTop="10dp"
+            android:background="#00000000"
+            android:paddingBottom="5dp"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

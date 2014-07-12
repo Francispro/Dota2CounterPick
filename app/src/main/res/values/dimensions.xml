@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textsize300">7.5sp</dimen>
+    <dimen name="textsize400">6sp</dimen>
+    <dimen name="textsize600">5sp</dimen>
+</resources>

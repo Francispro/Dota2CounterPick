@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.francispro.dota2counterpick" >
+
+
+    <uses-sdk xmlns:tools="http://schemas.android.com/tools"
+        android:minSdkVersion="15"
+        android:targetSdkVersion="19"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat" >
+        android:noHistory="true"
+        <activity
+            android:name=".Main"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FuerzaActivity"
+            android:label="@string/title_activity_fuerza"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".InteligenciaActivity"
+            android:label="@string/title_activity_inteligencia"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".AgilidadActivity"
+            android:label="@string/title_activity_agilidad"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- el comando android:noHistory="true" permite que no se guarde en la memoria por las activity que paso -->
+        <activity
+            android:name=".CounterPickActivity"
+            android:label="@string/title_activity_counter_pick"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".cp"
+            android:label="@string/title_activity_cp"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".sp"
+            android:label="@string/title_activity_sp"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".Informacion"
+            android:label="@string/title_activity_informacion"
+            android:noHistory="true"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>

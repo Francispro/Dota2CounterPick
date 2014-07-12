@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/TopWinRate"
+        app:showAsAction="ifRoom"
+        android:title="WinRate Top"/>
+
+    <item
+        android:id="@+id/TopPopularity"
+        app:showAsAction="ifRoom"
+        android:title="Popularity Top"/>
+</menu>
