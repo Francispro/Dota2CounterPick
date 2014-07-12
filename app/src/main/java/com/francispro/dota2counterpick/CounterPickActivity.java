@@ -13,7 +13,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TabHost;
@@ -21,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
 
+import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Locale;
@@ -58,6 +63,7 @@ public class CounterPickActivity extends TabActivity {
         Bundle bundle = getIntent().getExtras();
         Identificador = bundle.getInt("id");
 
+        getOverflowMenu();
 
         /*Medidas de DPI
          XHDPI < 300
@@ -304,5 +310,39 @@ public class CounterPickActivity extends TabActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_activity, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.TopWinRate:
+                return true;
+            case R.id.TopPopularity:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void getOverflowMenu() {
+
+        try {
+            ViewConfiguration config = ViewConfiguration.get(this);
+            Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+            if(menuKeyField != null) {
+                menuKeyField.setAccessible(true);
+                menuKeyField.setBoolean(config, false);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

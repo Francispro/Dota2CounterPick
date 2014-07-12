@@ -1,6 +1,7 @@
 package com.francispro.dota2counterpick;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
@@ -15,7 +16,7 @@ import com.francispro.dota2counterpick.ClasesAdapter.ImageAdapterFuerza;
 import javax.microedition.khronos.opengles.GL10Ext;
 
 
-public class FuerzaActivity extends ActionBarActivity {
+public class FuerzaActivity extends Activity {
 
 
     @Override

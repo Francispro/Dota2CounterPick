@@ -1,6 +1,7 @@
 package com.francispro.dota2counterpick;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import com.francispro.dota2counterpick.ClasesAdapter.CounterPickAdapter;
 
-public class cp extends ActionBarActivity {
+public class cp extends Activity {
 
     public static final String TAG = "--cp ";
     public static int[] URL_CP, Counterpcik_id;

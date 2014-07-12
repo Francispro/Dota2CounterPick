@@ -1,5 +1,6 @@
 package com.francispro.dota2counterpick;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.widget.GridView;
 
 import com.francispro.dota2counterpick.ClasesAdapter.ImageAdapterAgilidad;
 
-public class AgilidadActivity extends ActionBarActivity {
+public class AgilidadActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
