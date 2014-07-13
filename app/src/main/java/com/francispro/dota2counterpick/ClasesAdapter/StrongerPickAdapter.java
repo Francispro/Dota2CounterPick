@@ -69,8 +69,6 @@ public class StrongerPickAdapter extends BaseAdapter {
 
 
         iv.setImageResource(sp.URL_SP[position]);
-        //System.out.println(TAG+": valor imagesFuerza = "+imagesFuerza[position]);
-
         return iv;
     }
 
