@@ -78,7 +78,7 @@ public class Main extends TabActivity {
         //Inteligencia tabs
         intent = new Intent(this, InteligenciaActivity.class);
         spec = mTabHost.newTabSpec("inteligencia")
-                .setIndicator("Intelligence")
+                .setIndicator("Inteligencia")
                         //.setIndicator("", res.getDrawable(R.drawable.tab_icon_inteligencia))
                 .setContent(intent);
         mTabHost.addTab(spec);
