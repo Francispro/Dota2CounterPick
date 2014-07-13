@@ -58,7 +58,8 @@
             android:paddingBottom="5dp" />
 
 
-        <WebView android:id="@+id/char_view"
+        <WebView
+            android:id="@+id/char_view"
             android:paddingTop="10dp"
             android:background="#00000000"
             android:paddingBottom="5dp"
@@ -78,7 +79,8 @@
             android:paddingTop="20dp"
             android:paddingBottom="5dp" />
 
-        <WebView android:id="@+id/char_view_pop"
+        <WebView
+            android:id="@+id/char_view_pop"
             android:paddingTop="10dp"
             android:background="#00000000"
             android:paddingBottom="5dp"

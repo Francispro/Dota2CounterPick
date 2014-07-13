@@ -30,10 +30,13 @@ public class httpHandler {
             HttpEntity entity = responde.getEntity();
 
             String text  = EntityUtils.toString(entity);
+
+            System.out.println(TAG+" Antes > "+text);
+
             text = text.substring(0,5);
 
 
-            System.out.println(TAG+""+text);
+            System.out.println(TAG+" Despues > "+text);
             return text;
 
         }catch (Exception e)

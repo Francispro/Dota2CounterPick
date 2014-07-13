@@ -24,10 +24,10 @@ public class Informacion extends Activity {
 
     public String TAG = "--Informacion : ";
     public static int Identificador = 0;
-    public String txt_rate = null, txt_pop = null, color;
+    public String txt_rate = null, txt_pop = null, url_rate, url_pop;
     private MiTareaAsincrona tarea1;
     public static TextView Text_Name, Text_pop, Text_win;
-    public static String URL_IMAGEN_INFO = null;
+    public static String URL_IMAGEN_INFO = null, URL_DOMINIO = "http://infodota2clone.comli.com" ;
     public static String name_info = null;
     public static String win,pop,resolucion;
     public static float Pantalla=0;
@@ -78,10 +78,14 @@ public class Informacion extends Activity {
 
         if(Pantalla>=400)
         {
-            resolucion = "300x150";
+            resolucion = "500x300";
+
         }else{
             resolucion = "250x100";
+
         }
+        System.out.println(TAG+"resolucion > "+resolucion);
+
 
 
         tarea1 = new MiTareaAsincrona();
@@ -118,15 +122,17 @@ public class Informacion extends Activity {
             try{
                 //WinRate
                 httpHandler handler = new httpHandler();
-                txt_rate = handler.post("http://infodota2clone.comli.com/Dota2/"+win);
+                txt_rate = handler.post(URL_DOMINIO+"/Dota2/"+win);
                 System.out.println(TAG+" URL > http://infodota2clone.comli.com/Dota2/"+win);
                 float rate = Float.parseFloat(txt_rate);
-                System.out.println(TAG + " WINRATE > " + rate);
                 float sobra = 100-rate;
-                String url =  "http://chart.apis.google.com/chart?chf=bg,s,171919&chs="+resolucion+"&chd=t:"+rate+","+sobra+"&cht=p&chl="+rate+"%|"+sobra+"%&chco=669900,99CC00";
-                mCharView = (WebView) findViewById(R.id.char_view);
-                mCharView.loadUrl(url);
+                System.out.println(TAG + " WINRATE - Sobra> -" + rate +"-"+sobra+"-");
 
+                url_rate =  "http://chart.apis.google.com/chart?chf=bg,s,171919&chs="+resolucion+"&chd=t:"+rate+","+sobra+"&cht=p&chl="+rate+"%|"+sobra+"%&chco=669900,99CC00";
+                System.out.println(TAG + " url CharView > " + url_rate);
+
+                mCharView = (WebView) findViewById(R.id.char_view);
+                mCharView.loadUrl(url_rate);
                 mCharView.clearHistory();
                 mCharView.clearFormData();
                 mCharView.clearCache(true);
@@ -134,16 +140,15 @@ public class Informacion extends Activity {
 
                 //Popularity
                 httpHandler handler2 = new httpHandler();
-                txt_pop = handler2.post2("http://infodota2clone.comli.com/Dota2/"+pop);
+                txt_pop = handler2.post2(URL_DOMINIO+"/Dota2/"+pop);
 
                 float pop = Float.parseFloat(txt_pop);
                 float sobra2 = (pop*100)/107;
                 float porcentaje = 100-sobra2;
 
-                url =  "http://chart.apis.google.com/chart?chf=bg,s,171919&chs="+resolucion+"&chd=t:"+porcentaje+","+sobra2+"&cht=p&chl="+porcentaje+"%|"+sobra2+"%&chco=0099CC,33B5E5";
+                url_pop =  "http://chart.apis.google.com/chart?chf=bg,s,171919&chs="+resolucion+"&chd=t:"+porcentaje+","+sobra2+"&cht=p&chl="+porcentaje+"%|"+sobra2+"%&chco=0099CC,33B5E5";
                 mCharView2 = (WebView) findViewById(R.id.char_view_pop);
-                mCharView2.loadUrl(url);
-
+                mCharView2.loadUrl(url_pop);
                 mCharView2.clearHistory();
                 mCharView2.clearFormData();
                 mCharView2.clearCache(true);
@@ -164,15 +169,18 @@ public class Informacion extends Activity {
                 progressDialog.dismiss();
                 Text_win.setText("Win rate "+txt_rate+"%");
                 Text_pop.setText("Popularity "+txt_pop+"th");
+
+                progressDialog.dismiss();
                 mCharView2.setVisibility(View.VISIBLE);
                 mCharView.setVisibility(View.VISIBLE);
-
                 //Toast.makeText(Informacion.this, "Tarea finalizada!", Toast.LENGTH_SHORT).show();
 
             }
         }
 
     }
+
+
 
     @Override
     public void onBackPressed() {
