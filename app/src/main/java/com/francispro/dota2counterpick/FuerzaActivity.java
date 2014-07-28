@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.francispro.dota2counterpick.ClasesAdapter.ImageAdapterFuerza;
+import com.francispro.dota2counterpick.ClasesAdapter.ImageAdapterInteligencia;
 
 
 public class FuerzaActivity extends Activity {
@@ -20,7 +21,7 @@ public class FuerzaActivity extends Activity {
         setContentView(R.layout.activity_fuerza);
 
         GridView gv = (GridView)findViewById(R.id.gridViewFuerza);
-        gv.setAdapter(null);
+        //gv.setAdapter(null);
         gv.setAdapter(new ImageAdapterFuerza(getApplicationContext()));
 
 

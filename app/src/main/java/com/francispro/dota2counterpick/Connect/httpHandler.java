@@ -33,7 +33,7 @@ public class httpHandler {
             text = text.substring(0,5);
 
 
-            System.out.println(TAG+""+text);
+            System.out.println(TAG+"valor text post : "+text);
             return text;
 
         }catch (Exception e)
@@ -56,15 +56,15 @@ public class httpHandler {
             HttpEntity entity = responde.getEntity();
 
             String text  = EntityUtils.toString(entity);
-            text = text.substring(0,5);
+            //text = text.substring(0,5);
             text = get_cadena(text);
 
-            System.out.println(TAG+" Popularity "+text);
+            System.out.println(TAG+" valor text post2 : "+text);
             return text;
 
         }catch (Exception e)
         {
-            System.out.println(TAG+" ERROR2 >"+e);
+            System.out.println(TAG+" error post2 >"+e);
             return "error";
         }
 
@@ -79,16 +79,17 @@ public class httpHandler {
 
         for(int i=0; i < valor.length();i++){
             num = valor.substring(i,i+1);
+            System.out.println(TAG+" num > "+num);
             try{
                 aux = Integer.parseInt(num);
 
             }catch (Exception e){
                 vfinal = valor.substring(0,i);
-                System.out.println(TAG+" ccc Entro coto! "+vfinal);
+                System.out.println(TAG+" valor vfinal get_cadena "+vfinal);
                 break;
             }
             aux2 = aux;
-            System.out.println(TAG+" ccc Valor num "+num);
+            System.out.println(TAG+" Valor num get_cadena "+num);
         }
         return vfinal;
     }

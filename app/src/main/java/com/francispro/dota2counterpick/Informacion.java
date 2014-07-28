@@ -16,6 +16,8 @@ import android.view.ViewConfiguration;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.francispro.dota2counterpick.Connect.httpHandler;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
 
@@ -24,7 +26,7 @@ public class Informacion extends Activity {
 
     public String TAG = "--Informacion : ";
     public static int Identificador = 0;
-    public String txt_rate = null, txt_pop = null, color;
+    public String txt_rate = null, txt_pop = null, color, hosting = "http://dota2counterpick.esy.es/Dota2/";
     private MiTareaAsincrona tarea1;
     public static TextView Text_Name, Text_pop, Text_win;
     public static String URL_IMAGEN_INFO = null;
@@ -83,13 +85,32 @@ public class Informacion extends Activity {
             resolucion = "250x100";
         }
 
-
+        int primera =0, pass =0;
         tarea1 = new MiTareaAsincrona();
-        tarea1.execute();
+
+        do {
+            tarea1.execute();
+            if(primera==1) {
+                if (txt_pop.equals("errorth")) {
+                    System.out.println(TAG + " errorth");
+                    pass = 0;
+                    primera = 1;
+                } else {
+                    pass = 1;
+                    primera = 1;
+                    System.out.println(TAG + " okkkk");
+                }
+            }
+
+        }while(pass ==1);
+
 
         System.out.println(TAG+" >>> "+name_info);
         win = name_info+"_w.php";
         pop = name_info+"_p.php";
+
+        //Toast.makeText(Informacion.this, "Tarea finalizada!", Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -118,8 +139,11 @@ public class Informacion extends Activity {
             try{
                 //WinRate
                 httpHandler handler = new httpHandler();
-                txt_rate = handler.post("http://infodota2clone.comli.com/Dota2/"+win);
-                System.out.println(TAG+" URL > http://infodota2clone.comli.com/Dota2/"+win);
+                //txt_rate = handler.post("http://infodota2clone.comli.com/Dota2/"+win);
+                txt_rate = handler.post(hosting+win);
+
+
+                System.out.println(TAG+" URL > "+hosting+win);
                 float rate = Float.parseFloat(txt_rate);
                 System.out.println(TAG + " WINRATE > " + rate);
                 float sobra = 100-rate;
@@ -134,9 +158,12 @@ public class Informacion extends Activity {
 
                 //Popularity
                 httpHandler handler2 = new httpHandler();
-                txt_pop = handler2.post2("http://infodota2clone.comli.com/Dota2/"+pop);
+                txt_pop = handler2.post2(hosting+pop);
 
+                System.out.println(TAG+" URL > "+hosting+pop);
                 float pop = Float.parseFloat(txt_pop);
+                System.out.println(TAG + " POPULARITY > " + pop);
+
                 float sobra2 = (pop*100)/107;
                 float porcentaje = 100-sobra2;
 
@@ -164,8 +191,8 @@ public class Informacion extends Activity {
                 progressDialog.dismiss();
                 Text_win.setText("Win rate "+txt_rate+"%");
                 Text_pop.setText("Popularity "+txt_pop+"th");
-                mCharView2.setVisibility(View.VISIBLE);
-                mCharView.setVisibility(View.VISIBLE);
+                //mCharView2.setVisibility(View.VISIBLE);
+                //mCharView.setVisibility(View.VISIBLE);
 
                 //Toast.makeText(Informacion.this, "Tarea finalizada!", Toast.LENGTH_SHORT).show();
 

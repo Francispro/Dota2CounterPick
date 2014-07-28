@@ -61,7 +61,7 @@ public class ImageAdapterFuerza extends BaseAdapter {
         {
             iv = new ImageView(context);
 
-            if(Main.pixels <= 300) {
+            if(Main.pixels == 300) {
                 //HDPI  = 300  480x800
                 iv.setLayoutParams(new GridView.LayoutParams(100, 80));//ajusta el (ancho,alto) general de las imagenes de la grilla
             }else if(Main.pixels == 400) {

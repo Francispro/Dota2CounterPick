@@ -212,7 +212,7 @@ public class CounterPickActivity extends TabActivity {
             tamanio = (int)getResources().getDimension(R.dimen.textsize300);
         }else if(pixels==400){
             tamanio = (int)getResources().getDimension(R.dimen.textsize400);
-        }else if(pixels==600){
+        }else if(pixels<400){
             tamanio = (int)getResources().getDimension(R.dimen.textsize600);
         }
 
