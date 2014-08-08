@@ -9,6 +9,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
 import com.francispro.dota2counterpick.CounterPickActivity;
 import com.francispro.dota2counterpick.Informacion;
 import java.io.IOException;
@@ -230,6 +232,41 @@ public class CopyAdapter {
         String mReturn = mCursor.getString(mCursor.getColumnIndex(ACCOUNT_ADDITIONALDATA));
         mCursor.close();
         return mReturn;
+    }
+
+    public void retriveNameUrlcallBestWinRate(int mPosition)
+    {
+        try {
+            mDbHelper.openDataBase();
+            mDb = mDbHelper.getReadableDatabase();
+        }catch (Exception error){
+            Log.d(TAG+"Error cursor",error.toString());
+        }
+
+        Cursor mCursor = null;
+        String q = "SELECT * FROM personajes WHERE _id = "+mPosition;
+        System.out.println(TAG + ": Valor de q = " + q);
+
+        try {
+                mCursor = mDb.rawQuery(q, null);
+        } catch (Exception e) {
+                Log.d(TAG+"Error cursor retriveNameUrlcallBestWinRate ", e.toString() + " - " + q);
+        }
+        if (mCursor.moveToFirst()) {
+            do {
+
+               BestWinRate.nombre_Array_aux = mCursor.getString(mCursor.getColumnIndex(C_NOMBRE));
+               BestWinRate.name_info_Array_aux = mCursor.getString(mCursor.getColumnIndex(C_NINFO));
+                System.out.println(TAG+"valor index : "+mPosition);
+
+            } while (mCursor.moveToNext());
+        } else {
+            Log.e(TAG+" No se encontraron todos los valores buscados", null);
+        }
+
+        System.out.println(TAG+": Valor de URL_IMAGEN = "+ URL_IMAGEN);
+        mDbHelper.close();
+        mCursor.close();
     }
 
     public boolean deleteAccount(int mPosition)

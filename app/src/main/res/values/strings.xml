@@ -18,5 +18,7 @@
     <string name="label_data_loader">Looking necessary information, please wait.</string>
     <string name="label_data_connection">This section requires an internet connection.Check your network settings and try again.</string>
     <string name="label_data_connection_title">Network Error</string>
+    <string name="title_activity_best_win_rate">BestWinRate</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -14,6 +14,9 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
+
+import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
+
 import java.lang.reflect.Field;
 
 
@@ -155,9 +158,12 @@ public class Main extends TabActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.TopWinRate:
+            case R.id.BestWinRate:
+                Intent i = new Intent(getApplicationContext(), BestWinRate.class);
+                startActivity(i);
+                finish();
                 return true;
-            case R.id.TopPopularity:
+            case R.id.MostPlayed:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -6,14 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/TopWinRate"
+        android:id="@+id/BestWinRate"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.SearchView"
-        android:title="WinRate Top"/>
+        android:title="Best Win Rate"/>
 
     <item
-        android:id="@+id/TopPopularity"
+        android:id="@+id/MostPlayed"
         app:showAsAction="ifRoom"
         app:actionViewClass="android.widget.SearchView"
-        android:title="Popularity Top"/>
+        android:title="Most Played"/>
 </menu>

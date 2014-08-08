@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.TextView;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
+import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
 
 import java.lang.reflect.Field;
 import java.sql.SQLException;
@@ -61,6 +62,7 @@ public class CounterPickActivity extends TabActivity {
         Bundle bundle = getIntent().getExtras();
         Identificador = bundle.getInt("id");
 
+        //comando de ayuda para mostrar siempre el menu opciones
         getOverflowMenu();
 
         /*Medidas de DPI
@@ -320,9 +322,12 @@ public class CounterPickActivity extends TabActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.TopWinRate:
+            case R.id.BestWinRate:
+                Intent i = new Intent(getApplicationContext(), BestWinRate.class);
+                startActivity(i);
+                finish();
                 return true;
-            case R.id.TopPopularity:
+            case R.id.MostPlayed:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

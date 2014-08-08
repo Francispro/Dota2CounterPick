@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.francispro.dota2counterpick" >
 
-
-    <uses-sdk xmlns:tools="http://schemas.android.com/tools"
+    <uses-sdk
         android:minSdkVersion="15"
-        android:targetSdkVersion="19"/>
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -69,6 +67,10 @@
             android:label="@string/title_activity_informacion"
             android:noHistory="true"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ClasesMenuItem.BestWinRate"
+            android:label="@string/title_activity_best_win_rate" >
         </activity>
     </application>
 

@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
 import com.francispro.dota2counterpick.Connect.httpHandler;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
 
@@ -26,7 +27,7 @@ public class Informacion extends Activity {
 
     public String TAG = "--Informacion : ";
     public static int Identificador = 0;
-    public String txt_rate = null, txt_pop = null, color, hosting = "http://dota2counterpick.esy.es/Dota2/";
+    public String txt_rate = null, txt_pop = null, color, hosting = "http://allinformationdev.com/dota2/"; //http://dota2counterpick.esy.es/Dota2/
     private MiTareaAsincrona tarea1;
     public static TextView Text_Name, Text_pop, Text_win;
     public static String URL_IMAGEN_INFO = null;
@@ -235,9 +236,12 @@ public class Informacion extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.TopWinRate:
+            case R.id.BestWinRate:
+                Intent i = new Intent(getApplicationContext(), BestWinRate.class);
+                startActivity(i);
+                finish();
                 return true;
-            case R.id.TopPopularity:
+            case R.id.MostPlayed:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
