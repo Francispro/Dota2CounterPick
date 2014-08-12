@@ -27,7 +27,7 @@ public class Informacion extends Activity {
 
     public String TAG = "--Informacion : ";
     public static int Identificador = 0;
-    public String txt_rate = null, txt_pop = null, color, hosting = "http://allinformationdev.com/dota2/"; //http://dota2counterpick.esy.es/Dota2/
+    public String txt_rate = null, txt_pop = null, color, hosting = "http://dota2info.hol.es/dota2/";
     private MiTareaAsincrona tarea1;
     public static TextView Text_Name, Text_pop, Text_win;
     public static String URL_IMAGEN_INFO = null;

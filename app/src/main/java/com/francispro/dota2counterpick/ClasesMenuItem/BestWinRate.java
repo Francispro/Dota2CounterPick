@@ -1,30 +1,24 @@
 package com.francispro.dota2counterpick.ClasesMenuItem;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.webkit.WebView;
 import android.widget.TextView;
-
-import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
+import com.francispro.dota2counterpick.Connect.httpHandler;
+import com.francispro.dota2counterpick.Main;
 import com.francispro.dota2counterpick.R;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class BestWinRate extends Activity {
 
@@ -32,24 +26,30 @@ public class BestWinRate extends Activity {
     //public static String nombre_Array_aux;
     //public static String name_info_Array_aux;
 
-    String[] Arreglo_name_info = {"Earthshaker,Sven,Tiny,Kunkka,Beastmaster,Dragon-Knight,Clockwerk,Omniknight,Huskar,Alchemist,Brewmaster,Treant-Protector,Io,Centaur-Warrunner,Timbersaw,Bristleback," +
-            "Tusk,Elder-Titan,Legion-Commander,Earth-Spirit,Axe,Pudge,Sand-King,Slardar,Tidehunter,Wraith-King,Lifestealer,Night-Stalker,Doom,Spirit-Breaker,Lycan,Chaos-Knight,Undying,Magnus,Abaddon,Phoenix," +
-            "Anti-Mage,Drow-Ranger,Juggernaut,Mirana,Morphling,Phantom-Lancer,Vengeful-Spirit,Riki,Sniper,Templar-Assassin,Luna,Bounty-Hunter,Ursa,Gyrocopter,Lone-Druid,Naga-Siren,Troll-Warlord,Ember-Spirit," +
-            "Bloodseeker,Shadow-Fiend,Razor,Venomancer,Faceless-Void,Phantom-Assassin,Viper,Clinkz,Broodmother,Weaver,Spectre,Meepo,Nyx-Assassin,Slark,Medusa,Terrorblade,Crystal-Maiden,Puck,Storm-Spirit," +
-            "Windranger,Zeus,Lina,Shadow-Shaman,Tinker,Nature's-Prophet,Enchantress,Jakiro,Chen,Silencer,Ogre-Magi,Rubick,Disruptor,Keeper-of-the-Light,Skywrath-Mage,Bane,Lich,Lion,Witch-Doctor,Enigma,Necrophos," +
-            "Warlock,Queen-of-Pain,Death-Prophet,Pugna,Dazzle,Leshrac,Dark-Seer,Batrider,Ancient-Apparition,Invoker,Outworld-Devourer,Shadow-Demon,Visage"};
+    private static String TAG = "--BestWinRate : ";
+    public static String hosting = "http://www.dota2info.hol.es/dota2/";
+    public static String win = "";
+    private MiTareaAsincrona tarea1;
+
+    String[] Arreglo_name_info = {"Earthshaker","Sven","Tiny","Kunkka","Beastmaster","Dragon-Knight","Clockwerk","Omniknight","Huskar","Alchemist","Brewmaster","Treant-Protector","Io","Centaur-Warrunner","Timbersaw","Bristleback",
+            "Tusk","Elder-Titan","Legion-Commander","Earth-Spirit","Axe","Pudge","Sand-King","Slardar","Tidehunter","Wraith-King","Lifestealer","Night-Stalker","Doom","Spirit-Breaker","Lycan","Chaos-Knight","Undying","Magnus","Abaddon","Phoenix",
+            "Anti-Mage","Drow-Ranger","Juggernaut","Mirana","Morphling","Phantom-Lancer","Vengeful-Spirit","Riki","Sniper","Templar-Assassin","Luna","Bounty-Hunter","Ursa","Gyrocopter","Lone-Druid","Naga-Siren","Troll-Warlord","Ember-Spirit",
+            "Bloodseeker","Shadow-Fiend","Razor","Venomancer","Faceless-Void","Phantom-Assassin","Viper","Clinkz","Broodmother","Weaver","Spectre","Meepo","Nyx-Assassin","Slark","Medusa","Terrorblade","Crystal-Maiden","Puck","Storm-Spirit",
+            "Windranger","Zeus","Lina","Shadow-Shaman","Tinker","Natures-Prophet","Enchantress","Jakiro","Chen","Silencer","Ogre-Magi","Rubick","Disruptor","Keeper-of-the-Light","Skywrath-Mage","Bane","Lich","Lion","Witch-Doctor","Enigma","Necrophos",
+            "Warlock","Queen-of-Pain","Death-Prophet","Pugna,Dazzle","Leshrac","Dark-Seer","Batrider","Ancient-Apparition","Invoker","Outworld-Devourer","Shadow-Demon","Visage"};
 
 
-    String[] Arreglo_nombre={"Earthshaker,Sven,Tiny,Kunkka,Beastwmaster,Dragon Knight,Clockwerk,Omniknight,Huskar,Alchemist,Brewmaster,Treant Protector,Io,Centaur Warrunner,Timbersaw,Bristleback,Tusk," +
-            "Elder Titan,Legion Commander,Earth Spirit,Axe,Pudge,Sand King,Slardar,Tidehunter,Wraith King,Lifestealer,Night Stalker,Doom,Spirit Breaker,Lycan,Chaos Knight,Undying,Magnus,Abaddon,Phoenix," +
-            "Anti-Mage,Drow Ranger,Juggernaut,Mirana,Morphling,Phantom Lancer,Vengeful Spirit,Riki,Sniper,Templar Assassin,Luna,Bounty Hunter,Ursa,Gyrocopter,Lone Druid,Naga Siren,Troll Warlord,Ember Spirit," +
-            "Blood Seeker,Shadow Fiend,Razor,Venomancer,Faceless Void,Phantom Assassin,Viper,Clinkz,BroodMother,Weaver,Spectre,Meepo,Nyx Assassin,Slark,Medusa,Terrorblade,Crystal Maiden,Puck,Storm Spirit,Windranger," +
-            "Zeus,Lina,Shadow Shaman,Tinker,Nature's Prophet,Enchantress,Jakiro,Chen,Silencer,Ogre Magi,Rubick,Disruptor,Keeper of the Light,Skywrath Mage,Bane,Lich,Lion,Witch Doctor,Enigma,Necrophos,Warlock,Queen of Pain," +
-            "Death Prophet,Pugna,Dazzle,Leshrac,Dark Seer,Batrider,Ancient Apparition,Invoker,Outworld Devourer,Shadow Demon,Visage"};
+    String[] Arreglo_nombre={"Earthshaker","Sven","Tiny","Kunkka","Beastwmaster","Dragon Knight","Clockwerk","Omniknight","Huskar","Alchemist","Brewmaster","Treant Protector","Io","Centaur Warrunner","Timbersaw","Bristleback","Tusk",
+            "Elder Titan","Legion Commander","Earth Spirit","Axe","Pudge","Sand King","Slardar","Tidehunter","Wraith King","Lifestealer","Night Stalker","Doom","Spirit Breaker","Lycan","Chaos Knight","Undying","Magnus","Abaddon","Phoenix",
+            "Anti-Mage","Drow Ranger","Juggernaut","Mirana","Morphling","Phantom Lancer","Vengeful Spirit","Riki","Sniper","Templar Assassin","Luna","Bounty Hunter","Ursa","Gyrocopter","Lone Druid","Naga Siren","Troll Warlord","Ember Spirit",
+            "Blood Seeker","Shadow Fiend","Razor","Venomancer","Faceless Void","Phantom Assassin","Viper","Clinkz","BroodMother","Weaver","Spectre","Meepo","Nyx Assassin","Slark","Medusa","Terrorblade","Crystal Maiden","Puck","Storm Spirit","Windranger",
+            "Zeus","Lina","Shadow Shaman","Tinker","Nature's Prophet","Enchantress","Jakiro","Chen","Silencer","Ogre Magi","Rubick","Disruptor","Keeper of the Light","Skywrath Mage","Bane","Lich","Lion","Witch Doctor","Enigma","Necrophos",
+            "Warlock","Queen of Pain","Death Prophet","Pugna","Dazzle","Leshrac","Dark Seer","Batrider","Ancient Apparition","Invoker","Outworld Devourer","Shadow Demon","Visage"};
 
     public static int[] Arreglo_winrate = null;
 
-    public TextView tv1h,tv1m,tv2h,tv2m,tv3h,tv3m,tv4h,tv4m,tv5h,tv5m,tv6h,tv6m;
+
+    public TextView tv1h,tv1r,tv2h,tv2r,tv3h,tv3r,tv4h,tv4r,tv5h,tv5r,tv6h,tv6r;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,34 +75,29 @@ public class BestWinRate extends Activity {
         tituloMatch.setTypeface(face_r);
 
         tv1h = (TextView)findViewById(R.id.tv_item1_hero);
-        tv1m = (TextView)findViewById(R.id.tv_item1_match);
+        tv1r = (TextView)findViewById(R.id.tv_item1_rate);
 
         tv2h = (TextView)findViewById(R.id.tv_item2_hero);
-        tv2m = (TextView)findViewById(R.id.tv_item2_match);
+        tv2r = (TextView)findViewById(R.id.tv_item2_rate);
 
         tv3h = (TextView)findViewById(R.id.tv_item3_hero);
-        tv3m = (TextView)findViewById(R.id.tv_item3_match);
+        tv3r = (TextView)findViewById(R.id.tv_item3_rate);
 
         tv4h = (TextView)findViewById(R.id.tv_item4_hero);
-        tv4m = (TextView)findViewById(R.id.tv_item4_match);
+        tv4r = (TextView)findViewById(R.id.tv_item4_rate);
 
         tv5h = (TextView)findViewById(R.id.tv_item5_hero);
-        tv5m = (TextView)findViewById(R.id.tv_item5_match);
+        tv5r = (TextView)findViewById(R.id.tv_item5_rate);
 
         tv6h = (TextView)findViewById(R.id.tv_item6_hero);
-        tv6m = (TextView)findViewById(R.id.tv_item6_match);
-
-
-
-        for( int i=0;i<107;i++){
-            
-        }
+        tv6r = (TextView)findViewById(R.id.tv_item6_rate);
 
 
 
 
 
-
+        tarea1 = new MiTareaAsincrona();
+        tarea1.execute();
 
 
 
@@ -167,6 +162,130 @@ public class BestWinRate extends Activity {
 
     }
 
+    private class MiTareaAsincrona extends AsyncTask<Void, Integer, Boolean> {
+
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute(){
+            super.onPreExecute();
+
+            progressDialog = new ProgressDialog(BestWinRate.this);
+            progressDialog.setTitle("Loading...");
+            progressDialog.setMessage(getResources().getString(R.string.label_data_loader));
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... param) {
+            String txt_rate;
+            int rateInt = 0;
+
+            for(int i=0;i<107;i++) {
+                try{
+                    win = Arreglo_name_info[i] + "_w.php";
+                    System.out.println(TAG+" 000 Valor win : "+win);
+                    httpHandler handler = new httpHandler();
+                    txt_rate = handler.post(hosting+win);
+                    System.out.println(TAG+" 000 Valor txt_rate pre get_cadega : "+txt_rate);
+                    txt_rate = get_cadena(txt_rate);
+                    System.out.println(TAG+" 000 Valor txt_rate post get_cadega : "+txt_rate);
+                    rateInt = Integer.parseInt(txt_rate);
+                    Arreglo_winrate[i] = rateInt;
+
+                }catch(Exception e){
+                    Log.e(TAG+"", "Error in http connection "+e.toString());
+                }
+            }
+
+            int mayor = 0;
+            int auxNum,j=0;
+            String auxName=null, auxInf=null;
+
+            for (int f = 0; f < Arreglo_winrate.length - 1; f++) {
+                j=f;
+                auxNum = Arreglo_winrate[f];
+                auxName = Arreglo_nombre[f];
+                auxInf = Arreglo_name_info[f];
+
+                while (j>0 && auxNum > Arreglo_winrate[j-1])
+                {
+                    Arreglo_winrate[j] = Arreglo_winrate[j-1];
+                    Arreglo_nombre[j] = Arreglo_nombre[j-1];
+                    Arreglo_name_info[j] = Arreglo_name_info[j-1];
+                    j=j-1;
+                }
+                Arreglo_winrate[j] = auxNum;
+                Arreglo_nombre[j] = auxName;
+                Arreglo_name_info[j] = auxInf;
+
+            }
+
+
+
+            tv1h.setText(Arreglo_nombre[0]);
+            tv2h.setText(Arreglo_nombre[1]);
+            tv3h.setText(Arreglo_nombre[2]);
+            tv4h.setText(Arreglo_nombre[3]);
+            tv5h.setText(Arreglo_nombre[4]);
+            tv6h.setText(Arreglo_nombre[5]);
+
+            String[] cadena = new String[6];
+            for(int x=0;x<6;x++) {
+                cadena[x] = String.valueOf(Arreglo_winrate[x]);
+            }
+
+            tv1r.setText(cadena[0]);
+            tv2r.setText(cadena[1]);
+            tv3r.setText(cadena[2]);
+            tv4r.setText(cadena[3]);
+            tv5r.setText(cadena[4]);
+            tv6r.setText(cadena[5]);
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result){
+
+            if(result)
+            {
+                progressDialog.dismiss();
+            }
+        }
+
+    }
+
+    public String get_cadena(String valor){
+
+        String num = null;
+        String vfinal = null;
+        int aux, aux2;
+
+        for(int i=0; i < valor.length();i++){
+            num = valor.substring(i,i+1);
+            System.out.println(TAG+" num > "+num);
+            try{
+                aux = Integer.parseInt(num);
+
+            }catch (Exception e){
+                vfinal = valor.substring(0,i);
+                System.out.println(TAG+" valor vfinal get_cadena "+vfinal);
+                break;
+            }
+            aux2 = aux;
+            System.out.println(TAG+" Valor num get_cadena "+num);
+        }
+        return vfinal;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), Main.class);
+        startActivity(i);
+        finish();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

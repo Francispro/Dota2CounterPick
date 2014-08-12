@@ -255,8 +255,8 @@ public class CopyAdapter {
         if (mCursor.moveToFirst()) {
             do {
 
-               BestWinRate.nombre_Array_aux = mCursor.getString(mCursor.getColumnIndex(C_NOMBRE));
-               BestWinRate.name_info_Array_aux = mCursor.getString(mCursor.getColumnIndex(C_NINFO));
+               //BestWinRate.nombre_Array_aux = mCursor.getString(mCursor.getColumnIndex(C_NOMBRE));
+               //BestWinRate.name_info_Array_aux = mCursor.getString(mCursor.getColumnIndex(C_NINFO));
                 System.out.println(TAG+"valor index : "+mPosition);
 
             } while (mCursor.moveToNext());

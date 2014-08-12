@@ -20,7 +20,7 @@ public class httpHandler {
     public String TAG = "--httpHandler : ";
 
     public String post(String posturl){
-
+        System.out.println(TAG+" post> posturl>"+posturl);
         try{
 
             HttpClient httpClient = new DefaultHttpClient();
@@ -30,6 +30,8 @@ public class httpHandler {
             HttpEntity entity = responde.getEntity();
 
             String text  = EntityUtils.toString(entity);
+            System.out.println(TAG+"valor text pre subtring : "+text);
+
             text = text.substring(0,5);
 
 
@@ -41,12 +43,10 @@ public class httpHandler {
             System.out.println(TAG+" ERROR >"+e);
             return "error";
         }
-
-
     }
 
     public String post2(String posturl){
-
+        System.out.println(TAG+" post2> posturl>"+posturl);
         try{
 
             HttpClient httpClient = new DefaultHttpClient();
@@ -71,6 +71,7 @@ public class httpHandler {
 
     }
 
+
     public String get_cadena(String valor){
 
         String num = null;
@@ -92,6 +93,34 @@ public class httpHandler {
             System.out.println(TAG+" Valor num get_cadena "+num);
         }
         return vfinal;
+    }
+
+    public String get_cadenaWinRate(String valor){
+
+        String cadena = valor;
+        String delimitadores= ".";
+        String[] palabrasSeparadas = cadena.split(delimitadores);
+
+        System.out.println("valor : "+palabrasSeparadas[0]+"/ valor2 :"+palabrasSeparadas[1]);
+       /* String num = null;
+        String vfinal = null;
+        int aux, aux2;
+
+        for(int i=0; i < valor.length();i++){
+            num = valor.substring(i,i+1);
+            System.out.println(TAG+" num > "+num);
+            try{
+                aux = Integer.parseInt(num);
+
+            }catch (Exception e){
+                vfinal = valor.substring(0,i);
+                System.out.println(TAG+" valor vfinal get_cadena "+vfinal);
+                break;
+            }
+            aux2 = aux;
+            System.out.println(TAG+" Valor num get_cadena "+num);
+        }*/
+        return palabrasSeparadas[0];
     }
 
 }
