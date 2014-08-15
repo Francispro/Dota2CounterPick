@@ -11,6 +11,7 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,8 +25,17 @@ import android.widget.TextView;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
 import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -257,6 +267,8 @@ public class CounterPickActivity extends TabActivity {
         });
 
     }
+
+
 
 
     public void TransformarCP(String valor)

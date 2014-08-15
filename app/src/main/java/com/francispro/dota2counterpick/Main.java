@@ -16,7 +16,6 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
-
 import java.lang.reflect.Field;
 
 
@@ -34,7 +33,6 @@ public class Main extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         getOverflowMenu();
 

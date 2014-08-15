@@ -37,6 +37,7 @@ public class CopyAdapter {
     public static String C_IMG_BANNER = "img_banner";
     public static String C_ATRIBUTO = "atributo";
     public static String C_NINFO = "name_info";
+    public static String C_WINRATE = "winrate";
 
     public CopyAdapter(Context context)
     {
@@ -234,37 +235,39 @@ public class CopyAdapter {
         return mReturn;
     }
 
-    public void retriveNameUrlcallBestWinRate(int mPosition)
+    public void retriveNameWinRate(int mPosition)
     {
+
         try {
             mDbHelper.openDataBase();
             mDb = mDbHelper.getReadableDatabase();
         }catch (Exception error){
-            Log.d(TAG+"Error cursor",error.toString());
+            Log.d(TAG+"Error cursor > ",error.toString());
         }
 
+        String q = "SELECT winrate FROM personajes WHERE _id = " + mPosition , recover = null;
+        System.out.println(TAG+": Valor de q = "+q);
         Cursor mCursor = null;
-        String q = "SELECT * FROM personajes WHERE _id = "+mPosition;
-        System.out.println(TAG + ": Valor de q = " + q);
-
-        try {
-                mCursor = mDb.rawQuery(q, null);
-        } catch (Exception e) {
-                Log.d(TAG+"Error cursor retriveNameUrlcallBestWinRate ", e.toString() + " - " + q);
+        try{
+            mCursor = mDb.rawQuery(q, null);
+        }catch (Exception e){
+            Log.d("Error cursor",e.toString() +" - "+q);
         }
-        if (mCursor.moveToFirst()) {
+
+        if (mCursor.moveToFirst())
+        {
             do {
 
-               //BestWinRate.nombre_Array_aux = mCursor.getString(mCursor.getColumnIndex(C_NOMBRE));
-               //BestWinRate.name_info_Array_aux = mCursor.getString(mCursor.getColumnIndex(C_NINFO));
-                System.out.println(TAG+"valor index : "+mPosition);
+                recover = mCursor.getString(mCursor.getColumnIndex(C_WINRATE));
+
+                BestWinRate.aux = Float.parseFloat(recover);
+                System.out.println(TAG+"valor index : "+BestWinRate.aux);
 
             } while (mCursor.moveToNext());
         } else {
             Log.e(TAG+" No se encontraron todos los valores buscados", null);
         }
 
-        System.out.println(TAG+": Valor de URL_IMAGEN = "+ URL_IMAGEN);
         mDbHelper.close();
         mCursor.close();
     }
