@@ -235,15 +235,25 @@ public class CopyAdapter {
         return mReturn;
     }
 
-    public void retriveNameWinRate(int mPosition)
+    public void openDB()
     {
-
         try {
             mDbHelper.openDataBase();
             mDb = mDbHelper.getReadableDatabase();
         }catch (Exception error){
             Log.d(TAG+"Error cursor > ",error.toString());
         }
+    }
+
+    public void closeDB()
+    {
+
+        mDbHelper.close();
+
+    }
+
+    public void retriveNameWinRate(int mPosition)
+    {
 
         String q = "SELECT winrate FROM personajes WHERE _id = " + mPosition , recover = null;
         System.out.println(TAG+": Valor de q = "+q);
@@ -253,11 +263,9 @@ public class CopyAdapter {
         }catch (Exception e){
             Log.d("Error cursor",e.toString() +" - "+q);
         }
-
         if (mCursor.moveToFirst())
         {
             do {
-
                 recover = mCursor.getString(mCursor.getColumnIndex(C_WINRATE));
 
                 BestWinRate.aux = Float.parseFloat(recover);
@@ -267,8 +275,6 @@ public class CopyAdapter {
         } else {
             Log.e(TAG+" No se encontraron todos los valores buscados", null);
         }
-
-        mDbHelper.close();
         mCursor.close();
     }
 

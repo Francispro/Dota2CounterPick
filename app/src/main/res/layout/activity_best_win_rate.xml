@@ -29,6 +29,15 @@
             android:layout_above="@+id/listView"
             android:layout_centerHorizontal="true"
             android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="This Month"
+            android:textColor="#ffb7b5b5"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
     <LinearLayout
@@ -43,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hero"
-            android:textColor="#ffffff"
+            android:textColor="#33B5E5"
             android:id="@+id/tv_titulo_hero"
             android:layout_weight="1" />
 
@@ -51,10 +60,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rate"
-            android:textColor="#ffffff"
+            android:textColor="#33B5E5"
             android:id="@+id/tv_titulo_match"
             android:layout_weight="1" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#33B5E5" />
 
     <LinearLayout
         android:orientation="horizontal"

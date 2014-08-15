@@ -92,15 +92,18 @@ public class BestWinRate extends Activity {
 
 
         CopyAdapter mDbHelper = new CopyAdapter(BestWinRate.this);
+        mDbHelper.openDB();
 
 
         for(int i=0;i<107;i++) {
+
             mDbHelper.retriveNameWinRate(i);
             System.out.println(TAG+" Valor aux : "+aux);
             Arreglo_winrate[i] = aux;
             System.out.println(TAG+" Valor Arreglo_winrate : "+Arreglo_winrate[i]);
         }
 
+        mDbHelper.closeDB();
 
 
         float mayor = 0, auxNum;
