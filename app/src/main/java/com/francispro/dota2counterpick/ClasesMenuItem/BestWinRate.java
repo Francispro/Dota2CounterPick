@@ -100,7 +100,7 @@ public class BestWinRate extends Activity {
             mDbHelper.retriveNameWinRate(i);
             System.out.println(TAG+" Valor aux : "+aux);
             Arreglo_winrate[i] = aux;
-            System.out.println(TAG+" Valor Arreglo_winrate : "+Arreglo_winrate[i]);
+            //System.out.println(TAG+" Valor Arreglo_winrate : "+Arreglo_winrate[i]);
         }
 
         mDbHelper.closeDB();

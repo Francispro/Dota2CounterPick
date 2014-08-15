@@ -95,32 +95,6 @@ public class httpHandler {
         return vfinal;
     }
 
-    public String get_cadenaWinRate(String valor){
 
-        String cadena = valor;
-        String delimitadores= ".";
-        String[] palabrasSeparadas = cadena.split(delimitadores);
-
-        System.out.println("valor : "+palabrasSeparadas[0]+"/ valor2 :"+palabrasSeparadas[1]);
-       /* String num = null;
-        String vfinal = null;
-        int aux, aux2;
-
-        for(int i=0; i < valor.length();i++){
-            num = valor.substring(i,i+1);
-            System.out.println(TAG+" num > "+num);
-            try{
-                aux = Integer.parseInt(num);
-
-            }catch (Exception e){
-                vfinal = valor.substring(0,i);
-                System.out.println(TAG+" valor vfinal get_cadena "+vfinal);
-                break;
-            }
-            aux2 = aux;
-            System.out.println(TAG+" Valor num get_cadena "+num);
-        }*/
-        return palabrasSeparadas[0];
-    }
 
 }

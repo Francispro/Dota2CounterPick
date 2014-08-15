@@ -192,8 +192,8 @@ public class Informacion extends Activity {
                 progressDialog.dismiss();
                 Text_win.setText("Win rate "+txt_rate+"%");
                 Text_pop.setText("Popularity "+txt_pop+"th");
-                //mCharView2.setVisibility(View.VISIBLE);
-                //mCharView.setVisibility(View.VISIBLE);
+                mCharView2.setVisibility(View.VISIBLE);
+                mCharView.setVisibility(View.VISIBLE);
 
                 //Toast.makeText(Informacion.this, "Tarea finalizada!", Toast.LENGTH_SHORT).show();
 
