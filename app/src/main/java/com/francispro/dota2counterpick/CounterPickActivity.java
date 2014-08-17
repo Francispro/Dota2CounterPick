@@ -24,6 +24,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
 import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
+import com.francispro.dota2counterpick.ClasesMenuItem.MostPlayed;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -340,6 +341,9 @@ public class CounterPickActivity extends TabActivity {
                 finish();
                 return true;
             case R.id.MostPlayed:
+                Intent o = new Intent(getApplicationContext(), MostPlayed.class);
+                startActivity(o);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

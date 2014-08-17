@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
+import com.francispro.dota2counterpick.ClasesMenuItem.MostPlayed;
 import com.francispro.dota2counterpick.CounterPickActivity;
 import com.francispro.dota2counterpick.Informacion;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class CopyAdapter {
     public static String C_ATRIBUTO = "atributo";
     public static String C_NINFO = "name_info";
     public static String C_WINRATE = "winrate";
+    public static String C_MOSTPLAYED = "mostplayed";
 
     public CopyAdapter(Context context)
     {
@@ -256,7 +258,8 @@ public class CopyAdapter {
     {
 
         String q = "SELECT winrate FROM personajes WHERE _id = " + mPosition , recover = null;
-        System.out.println(TAG+": Valor de q = "+q);
+        //
+        // System.out.println(TAG+": Valor de q = "+q);
         Cursor mCursor = null;
         try{
             mCursor = mDb.rawQuery(q, null);
@@ -269,7 +272,33 @@ public class CopyAdapter {
                 recover = mCursor.getString(mCursor.getColumnIndex(C_WINRATE));
 
                 BestWinRate.aux = Float.parseFloat(recover);
-                System.out.println(TAG+"valor index : "+BestWinRate.aux);
+                //System.out.println(TAG+"valor index : "+BestWinRate.aux);
+
+            } while (mCursor.moveToNext());
+        } else {
+            Log.e(TAG+" No se encontraron todos los valores buscados", null);
+        }
+        mCursor.close();
+    }
+
+    public void retriveNameMostPlayed(int mPosition)
+    {
+
+        String q = "SELECT mostplayed FROM personajes WHERE _id = " + mPosition , recover = null;
+        //
+        // System.out.println(TAG+": Valor de q = "+q);
+        Cursor mCursor = null;
+        try{
+            mCursor = mDb.rawQuery(q, null);
+        }catch (Exception e){
+            Log.d("Error cursor",e.toString() +" - "+q);
+        }
+        if (mCursor.moveToFirst())
+        {
+            do {
+                recover = mCursor.getString(mCursor.getColumnIndex(C_MOSTPLAYED));
+                MostPlayed.auxMostPlayed = Integer.parseInt(recover);
+
 
             } while (mCursor.moveToNext());
         } else {

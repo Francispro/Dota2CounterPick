@@ -73,7 +73,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -137,6 +138,46 @@
                 android:text="Hero"
                 android:textColor="#ffffff"
                 android:id="@+id/tv_item6_hero"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hero"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_item7_hero"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hero"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_item8_hero"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hero"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_item9_hero"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hero"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_item10_hero"
                 android:layout_weight="1"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp" />
@@ -204,6 +245,46 @@
                 android:text="rate"
                 android:textColor="#ffffff"
                 android:id="@+id/tv_item6_rate"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rate"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_item7_rate"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rate"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_item8_rate"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rate"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_item9_rate"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="rate"
+                android:textColor="#ffffff"
+                android:id="@+id/tv_item10_rate"
                 android:layout_weight="1"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp" />

@@ -16,6 +16,8 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
+import com.francispro.dota2counterpick.ClasesMenuItem.MostPlayed;
+
 import java.lang.reflect.Field;
 
 
@@ -162,6 +164,9 @@ public class Main extends TabActivity {
                 finish();
                 return true;
             case R.id.MostPlayed:
+                Intent o = new Intent(getApplicationContext(), MostPlayed.class);
+                startActivity(o);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

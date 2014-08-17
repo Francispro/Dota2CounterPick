@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.francispro.dota2counterpick.ClasesMenuItem.BestWinRate;
+import com.francispro.dota2counterpick.ClasesMenuItem.MostPlayed;
 import com.francispro.dota2counterpick.Connect.httpHandler;
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
 
@@ -242,6 +243,9 @@ public class Informacion extends Activity {
                 finish();
                 return true;
             case R.id.MostPlayed:
+                Intent o = new Intent(getApplicationContext(), MostPlayed.class);
+                startActivity(o);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

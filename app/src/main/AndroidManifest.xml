@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -72,6 +72,10 @@
         <activity
             android:name=".ClasesMenuItem.BestWinRate"
             android:label="@string/title_activity_best_win_rate" >
+        </activity>
+        <activity
+            android:name=".ClasesMenuItem.MostPlayed"
+            android:label="@string/title_activity_most_played" >
         </activity>
     </application>
 

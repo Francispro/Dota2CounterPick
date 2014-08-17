@@ -1,33 +1,28 @@
 package com.francispro.dota2counterpick.ClasesMenuItem;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewConfiguration;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.francispro.dota2counterpick.ClasesDataBase.CopyAdapter;
-import com.francispro.dota2counterpick.Connect.httpHandler;
 import com.francispro.dota2counterpick.Main;
 import com.francispro.dota2counterpick.R;
 
 import java.lang.reflect.Field;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
-
-public class BestWinRate extends Activity {
-
+public class MostPlayed extends Activity {
 
     private static String TAG = "--BestWinRate : ";
-    public static float aux = 0;
+    public static int auxMostPlayed = 0;
 
     String[] Arreglo_name_info = {"Earthshaker","Sven","Tiny","Kunkka","Beastmaster","Dragon-Knight","Clockwerk","Omniknight","Huskar","Alchemist","Brewmaster","Treant-Protector","Io","Centaur-Warrunner","Timbersaw","Bristleback",
             "Tusk","Elder-Titan","Legion-Commander","Earth-Spirit","Axe","Pudge","Sand-King","Slardar","Tidehunter","Wraith-King","Lifestealer","Night-Stalker","Doom","Spirit-Breaker","Lycan","Chaos-Knight","Undying","Magnus","Abaddon","Phoenix",
@@ -44,16 +39,16 @@ public class BestWinRate extends Activity {
             "Zeus","Lina","Shadow Shaman","Tinker","Nature's Prophet","Enchantress","Jakiro","Chen","Silencer","Ogre Magi","Rubick","Disruptor","Keeper of the Light","Skywrath Mage","Bane","Lich","Lion","Witch Doctor","Enigma","Necrophos",
             "Warlock","Queen of Pain","Death Prophet","Pugna","Dazzle","Leshrac","Dark Seer","Batrider","Ancient Apparition","Invoker","Outworld Devourer","Shadow Demon","Visage"};
 
-    public static float[] Arreglo_winrate = new float[107];
+    public static int[] Arreglo_mostplayed = new int[107];
 
 
     public TextView tv1h,tv2h,tv3h,tv4h,tv5h,tv6h,tv7h,tv8h,tv9h,tv10h;
-    public TextView tv1r,tv2r,tv3r,tv4r,tv5r,tv6r,tv7r,tv8r,tv9r,tv10r;
+    public TextView tv1m,tv2m,tv3m,tv4m,tv5m,tv6m,tv7m,tv8m,tv9m,tv10m;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_best_win_rate);
+        setContentView(R.layout.activity_most_played);
 
         //comando de ayuda para mostrar siempre el menu opciones
         getOverflowMenu();
@@ -73,30 +68,30 @@ public class BestWinRate extends Activity {
         tituloMatch.setTextSize(20);
         tituloMatch.setTypeface(face_r);
 
-        tv1h = (TextView)findViewById(R.id.tv_item1_hero);
-        tv1r = (TextView)findViewById(R.id.tv_item1_rate);
-        tv2h = (TextView)findViewById(R.id.tv_item2_hero);
-        tv2r = (TextView)findViewById(R.id.tv_item2_rate);
-        tv3h = (TextView)findViewById(R.id.tv_item3_hero);
-        tv3r = (TextView)findViewById(R.id.tv_item3_rate);
-        tv4h = (TextView)findViewById(R.id.tv_item4_hero);
-        tv4r = (TextView)findViewById(R.id.tv_item4_rate);
-        tv5h = (TextView)findViewById(R.id.tv_item5_hero);
-        tv5r = (TextView)findViewById(R.id.tv_item5_rate);
-        tv6h = (TextView)findViewById(R.id.tv_item6_hero);
-        tv6r = (TextView)findViewById(R.id.tv_item6_rate);
-        tv6h = (TextView)findViewById(R.id.tv_item6_hero);
-        tv6r = (TextView)findViewById(R.id.tv_item6_rate);
-        tv7h = (TextView)findViewById(R.id.tv_item7_hero);
-        tv7r = (TextView)findViewById(R.id.tv_item7_rate);
-        tv8h = (TextView)findViewById(R.id.tv_item8_hero);
-        tv8r = (TextView)findViewById(R.id.tv_item8_rate);
-        tv9h = (TextView)findViewById(R.id.tv_item9_hero);
-        tv9r = (TextView)findViewById(R.id.tv_item9_rate);
-        tv10h = (TextView)findViewById(R.id.tv_item10_hero);
-        tv10r = (TextView)findViewById(R.id.tv_item10_rate);
+        tv1h = (TextView)findViewById(R.id.tv_item1_heromp);
+        tv1m = (TextView)findViewById(R.id.tv_item1_played);
+        tv2h = (TextView)findViewById(R.id.tv_item2_heromp);
+        tv2m = (TextView)findViewById(R.id.tv_item2_played);
+        tv3h = (TextView)findViewById(R.id.tv_item3_heromp);
+        tv3m = (TextView)findViewById(R.id.tv_item3_played);
+        tv4h = (TextView)findViewById(R.id.tv_item4_heromp);
+        tv4m = (TextView)findViewById(R.id.tv_item4_played);
+        tv5h = (TextView)findViewById(R.id.tv_item5_heromp);
+        tv5m = (TextView)findViewById(R.id.tv_item5_played);
+        tv6h = (TextView)findViewById(R.id.tv_item6_heromp);
+        tv6m = (TextView)findViewById(R.id.tv_item6_played);
+        tv6h = (TextView)findViewById(R.id.tv_item6_heromp);
+        tv6m = (TextView)findViewById(R.id.tv_item6_played);
+        tv7h = (TextView)findViewById(R.id.tv_item7_heromp);
+        tv7m = (TextView)findViewById(R.id.tv_item7_played);
+        tv8h = (TextView)findViewById(R.id.tv_item8_heromp);
+        tv8m = (TextView)findViewById(R.id.tv_item8_played);
+        tv9h = (TextView)findViewById(R.id.tv_item9_heromp);
+        tv9m = (TextView)findViewById(R.id.tv_item9_played);
+        tv10h = (TextView)findViewById(R.id.tv_item10_heromp);
+        tv10m = (TextView)findViewById(R.id.tv_item10_played);
 
-        CopyAdapter mDbHelper = new CopyAdapter(BestWinRate.this);
+        CopyAdapter mDbHelper = new CopyAdapter(MostPlayed.this);
 
         try {
             mDbHelper.createDatabase();
@@ -110,40 +105,38 @@ public class BestWinRate extends Activity {
         mDbHelper.openDB();
 
         for(int i=0;i<107;i++) {
-
-            mDbHelper.retriveNameWinRate(i);
-            //System.out.println(TAG+" Valor aux : "+aux);
-            Arreglo_winrate[i] = aux;
-            //System.out.println(TAG+" Valor Arreglo_winrate : "+Arreglo_winrate[i]);
+            mDbHelper.retriveNameMostPlayed(i);
+            Arreglo_mostplayed[i] = auxMostPlayed;
+            //System.out.println(TAG+" Valor Arreglo_mostplayed : "+Arreglo_mostplayed[i]);
         }
 
         mDbHelper.closeDB();
 
 
-        float mayor = 0, auxNum;
-        int j=0;
+        float mayor = 0;
+        int j=0, auxNum;
         String auxName=null, auxInf=null;
 
-        for (int f = 0; f < Arreglo_winrate.length - 1; f++) {
+        for (int f = 0; f < Arreglo_mostplayed.length - 1; f++) {
             j=f;
-            auxNum = Arreglo_winrate[f];
+            auxNum = Arreglo_mostplayed[f];
             auxName = Arreglo_nombre[f];
             auxInf = Arreglo_name_info[f];
 
-            while (j>0 && auxNum > Arreglo_winrate[j-1])
+            while (j>0 && auxNum > Arreglo_mostplayed[j-1])
             {
-                Arreglo_winrate[j] = Arreglo_winrate[j-1];
+                Arreglo_mostplayed[j] = Arreglo_mostplayed[j-1];
                 Arreglo_nombre[j] = Arreglo_nombre[j-1];
                 Arreglo_name_info[j] = Arreglo_name_info[j-1];
                 j=j-1;
             }
-            Arreglo_winrate[j] = auxNum;
+            Arreglo_mostplayed[j] = auxNum;
             Arreglo_nombre[j] = auxName;
             Arreglo_name_info[j] = auxInf;
 
         }
 
-       // System.out.println(TAG+"Arreglo_winrate[9] > "+Arreglo_winrate[9]);
+        // System.out.println(TAG+"Arreglo_winrate[9] > "+Arreglo_winrate[9]);
 
 
         tv1h.setText(Arreglo_nombre[0]);
@@ -157,24 +150,25 @@ public class BestWinRate extends Activity {
         tv9h.setText(Arreglo_nombre[8]);
         tv10h.setText(Arreglo_nombre[9]);
 
-
         String[] cadena = new String[10];
         for(int x=0;x<cadena.length;x++) {
-            cadena[x] = String.valueOf(Arreglo_winrate[x]);
+            NumberFormat nf = NumberFormat.getNumberInstance();
+            DecimalFormat df = (DecimalFormat)nf;
+            cadena[x] = df.format(Arreglo_mostplayed[x]);
         }
 
-        tv1r.setText(cadena[0]+"%");
-        tv2r.setText(cadena[1]+"%");
-        tv3r.setText(cadena[2]+"%");
-        tv4r.setText(cadena[3]+"%");
-        tv5r.setText(cadena[4]+"%");
-        tv6r.setText(cadena[5]+"%");
-        tv7r.setText(cadena[6]+"%");
-        tv8r.setText(cadena[7]+"%");
-        tv9r.setText(cadena[8]+"%");
-        tv10r.setText(cadena[9]+"%");
 
 
+        tv1m.setText(cadena[0]+"");
+        tv2m.setText(cadena[1]+"");
+        tv3m.setText(cadena[2]+"");
+        tv4m.setText(cadena[3]+"");
+        tv5m.setText(cadena[4]+"");
+        tv6m.setText(cadena[5]+"");
+        tv7m.setText(cadena[6]+"");
+        tv8m.setText(cadena[7]+"");
+        tv9m.setText(cadena[8]+"");
+        tv10m.setText(cadena[9]+"");
 
     }
 
@@ -199,11 +193,11 @@ public class BestWinRate extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.BestWinRate:
+                Intent i = new Intent(getApplicationContext(), BestWinRate.class);
+                startActivity(i);
+                finish();
                 return true;
             case R.id.MostPlayed:
-                Intent o = new Intent(getApplicationContext(), MostPlayed.class);
-                startActivity(o);
-                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

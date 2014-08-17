@@ -20,5 +20,6 @@
     <string name="label_data_connection_title">Network Error</string>
     <string name="title_activity_best_win_rate">BestWinRate</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_most_played">MostPlayed</string>
 
 </resources>
